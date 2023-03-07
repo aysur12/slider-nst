@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Nouislider from 'nouislider-react';
 import 'nouislider/distribute/nouislider.css';
-import styles from './DateSlider.module.css';
+import styles from './DateSlider.module.scss';
 
 const DateSlider = () => {
   const [isOpaqueMonthBtn, setIsOpaqueMonthBtn] = useState(false);
@@ -21,9 +21,20 @@ const DateSlider = () => {
     return new Date(str).getTime();
   }
 
+  const formatter = new Intl.DateTimeFormat('ru', {
+    year: 'numeric',
+    month: 'long',
+  });
+  
+  function formatDate(value) {
+    return formatter.format(value).replace(/\s*г\./, '');
+  }
+
+
+
   return (
     <div className={styles.dateSlider}>
-      <div className={styles.buttons}>
+      <div className={styles.dateSliderButtons}>
         <button
           className={`${styles.dateSliderButton} ${
             isOpaqueYearBtn ? styles.dateSliderButtonOpaque : ''
@@ -44,9 +55,16 @@ const DateSlider = () => {
       <div className={styles.dateSliderRangeContainer}>
         <Nouislider
           range={{ min: timestamp('2010'), max: timestamp('2016') }}
-          step={7 * 24 * 60 * 60 * 1000}
+          step={30 * 24 * 60 * 60 * 1000}
           start={[timestamp('2011'), timestamp('2015')]}
-          tooltips={[true, true]}
+          tooltips={[
+            {
+              to: formatDate,
+            },
+            {
+              to: formatDate,
+            },
+          ]}
           connect
         />
       </div>
