@@ -1,4 +1,5 @@
 import DateSlider from './components/DateSlider';
+import './App.css';
 
 function App() {
   const minValue = '2015';

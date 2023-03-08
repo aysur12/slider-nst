@@ -1,4 +1,5 @@
 import Nouislider from 'nouislider-react';
+import './CustomSlider.css';
 
 const CustomSlider = (props) => {
   const { isYearBtn, min, max, defaultMin, defaultMax } = props;
@@ -41,7 +42,7 @@ const CustomSlider = (props) => {
         ]}
         pips={{
           mode: 'steps',
-          density: 3,
+          density: 50,
           filter: isYearBtn ? filterPips : null,
           format: {
             to: formatPips,

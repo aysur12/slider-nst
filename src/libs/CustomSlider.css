@@ -83,23 +83,16 @@
 /* Slider size and handle placement;
  */
 .noUi-horizontal {
-  height: 18px;
+  height: 7px;
 }
 .noUi-horizontal .noUi-handle {
-  width: 34px;
-  height: 28px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
   right: -17px;
   top: -6px;
 }
-.noUi-vertical {
-  width: 18px;
-}
-.noUi-vertical .noUi-handle {
-  width: 28px;
-  height: 34px;
-  right: -6px;
-  top: -17px;
-}
+
 .noUi-txt-dir-rtl.noUi-horizontal .noUi-handle {
   left: -17px;
   right: auto;
@@ -108,16 +101,14 @@
  * Giving the connect element a border radius causes issues with using transform: scale
  */
 .noUi-target {
-  background: #FAFAFA;
-  border-radius: 4px;
-  border: 1px solid #D3D3D3;
-  box-shadow: inset 0 1px 1px #F0F0F0, 0 3px 6px -5px #BBB;
+  background: #edf1f8;
+  border-radius: 100px;
 }
 .noUi-connects {
   border-radius: 3px;
 }
 .noUi-connect {
-  background: #3FB8AF;
+  background: #5cadea;
 }
 /* Handles and cursors;
  */
@@ -128,45 +119,20 @@
   cursor: ns-resize;
 }
 .noUi-handle {
-  border: 1px solid #D9D9D9;
+  border: 5px solid #5cadea;
   border-radius: 3px;
-  background: #FFF;
+  background: #fff;
   cursor: default;
-  box-shadow: inset 0 0 1px #FFF, inset 0 1px 7px #EBEBEB, 0 3px 6px -3px #BBB;
+  box-shadow: 0px 3px 5px rgba(31, 85, 132, 0.2);
 }
 .noUi-active {
-  box-shadow: inset 0 0 1px #FFF, inset 0 1px 7px #DDD, 0 3px 6px -3px #BBB;
+  box-shadow: inset 0 0 1px #fff, inset 0 1px 7px #ddd, 0 3px 6px -3px #bbb;
 }
-/* Handle stripes;
- */
-.noUi-handle:before,
-.noUi-handle:after {
-  content: "";
-  display: block;
-  position: absolute;
-  height: 14px;
-  width: 1px;
-  background: #E8E7E6;
-  left: 14px;
-  top: 6px;
-}
-.noUi-handle:after {
-  left: 17px;
-}
-.noUi-vertical .noUi-handle:before,
-.noUi-vertical .noUi-handle:after {
-  width: 14px;
-  height: 1px;
-  left: 6px;
-  top: 14px;
-}
-.noUi-vertical .noUi-handle:after {
-  top: 17px;
-}
+
 /* Disabled state;
  */
 [disabled] .noUi-connect {
-  background: #B8B8B8;
+  background: #b8b8b8;
 }
 [disabled].noUi-target,
 [disabled].noUi-handle,
@@ -183,7 +149,7 @@
 }
 .noUi-pips {
   position: absolute;
-  color: #999;
+  color: #999999;
 }
 /* Values;
  *
@@ -193,23 +159,31 @@
   white-space: nowrap;
   text-align: center;
 }
+
+.noUi-value-large {
+  color: #999;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.noUi-value-large:last-child {
+  padding-left: 8px;
+}
+
 .noUi-value-sub {
-  color: #ccc;
-  font-size: 10px;
+  color: #999;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 18px;
 }
 /* Markings;
  *
  */
 .noUi-marker {
   position: absolute;
-  background: #CCC;
 }
-.noUi-marker-sub {
-  background: #AAA;
-}
-.noUi-marker-large {
-  background: #AAA;
-}
+
 /* Horizontal layout;
  *
  */
@@ -221,24 +195,14 @@
   width: 100%;
 }
 .noUi-value-horizontal {
-  -webkit-transform: translate(-50%, 50%);
-  transform: translate(-50%, 50%);
+  -webkit-transform: translate(-27%, 32%);
+  transform: translate(-27%, 32%);
 }
 .noUi-rtl .noUi-value-horizontal {
   -webkit-transform: translate(50%, 50%);
   transform: translate(50%, 50%);
 }
-.noUi-marker-horizontal.noUi-marker {
-  margin-left: -1px;
-  width: 2px;
-  height: 5px;
-}
-.noUi-marker-horizontal.noUi-marker-sub {
-  height: 10px;
-}
-.noUi-marker-horizontal.noUi-marker-large {
-  height: 15px;
-}
+
 /* Vertical layout;
  *
  */
@@ -269,22 +233,60 @@
   width: 15px;
 }
 .noUi-tooltip {
-  display: block;
   position: absolute;
-  border: 1px solid #D9D9D9;
-  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 66px;
+  border-radius: 6px;
   background: #fff;
-  color: #000;
-  padding: 5px;
+  color: #0167b3;
+  padding: 6px 14px;
+  box-shadow: 0px 5px 15px rgba(14, 88, 143, 0.2);
   text-align: center;
   white-space: nowrap;
+  font: 600 18px/1.33 Raleway, sans-serif;
+  font-feature-settings: 'pnum' on, 'lnum' on;
 }
 .noUi-horizontal .noUi-tooltip {
-  -webkit-transform: translate(-50%, 0);
-  transform: translate(-50%, 0);
+  -webkit-transform: translate(-50%, -25%);
+  transform: translate(-50%, -25%);
   left: 50%;
   bottom: 120%;
 }
+
+.noUi-origin:last-child .noUi-tooltip {
+  -webkit-transform: translate(-50%, 150%);
+  transform: translate(-50%, 150%);
+  left: 50%;
+  bottom: 120%;
+}
+
+.noUi-tooltip::before {
+  position: absolute;
+  bottom: -7px;
+  height: 0;
+  width: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-top-color: #fff;
+  border-width: 8px 8px 0;
+  content: '';
+}
+
+.noUi-origin:last-child .noUi-tooltip::before {
+  position: absolute;
+  top: -7px;
+  height: 0;
+  width: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-top-color: #fff;
+  border-width: 8px 8px 0;
+  transform: rotate(180deg);
+  content: '';
+}
+
 .noUi-vertical .noUi-tooltip {
   -webkit-transform: translate(0, -50%);
   transform: translate(0, -50%);

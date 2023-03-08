@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import CustomSlider from '../libs/CustomSlider';
-import 'nouislider/distribute/nouislider.css';
 import styles from './DateSlider.module.scss';
 
 const DateSlider = (props) => {
@@ -32,7 +31,7 @@ const DateSlider = (props) => {
           } `}
           onClick={handleAllYearClick}
         >
-          Years
+          Все года
         </button>
         <button
           className={`${styles.dateSliderButton} ${
@@ -40,7 +39,7 @@ const DateSlider = (props) => {
           } `}
           onClick={handleAllMonthClick}
         >
-          Months
+          Месяца
         </button>
       </div>
       <div className={styles.dateSliderRangeContainer}>

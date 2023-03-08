@@ -2,13 +2,12 @@
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: 30px;
+  gap: 20px;
   width: 100%;
-  max-width: 1347px;
   margin: 0 auto;
-  padding: 93px 50px 70px;
+  padding: 100px 118px 70px 23px;
 
-  @media screen and (max-width: 1268px){
+  @media screen and (max-width: 1268px) {
     flex-direction: column;
     align-items: center;
     gap: 0;
@@ -22,7 +21,6 @@
   }
 
   &Button {
-    max-width: 60px;
     padding: 0;
     color: #0167b3;
     background-color: transparent;
@@ -36,7 +34,7 @@
   }
 
   &RangeContainer {
-    width: clamp(250px, 100% ,1117px);
-    margin-top: 18px;
+    width: clamp(250px, 100%, 1117px);
+    margin-top: 15px;
   }
 }
