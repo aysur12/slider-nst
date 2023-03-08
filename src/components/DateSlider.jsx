@@ -1,9 +1,11 @@
 import { useState } from 'react';
-import Nouislider from 'nouislider-react';
+import CustomSlider from '../libs/CustomSlider';
 import 'nouislider/distribute/nouislider.css';
 import styles from './DateSlider.module.scss';
 
-const DateSlider = () => {
+const DateSlider = (props) => {
+  const { minValue, maxValue, defaultMinValue, defaultMaxValue } = props;
+
   const [isOpaqueYearBtn, setIsOpaqueYearBtn] = useState(true);
   const [isOpaqueMonthBtn, setIsOpaqueMonthBtn] = useState(false);
 
@@ -20,27 +22,6 @@ const DateSlider = () => {
   const timestamp = (str) => {
     return new Date(str).getTime();
   };
-
-  const formatter = new Intl.DateTimeFormat('ru', {
-    year: 'numeric',
-    month: 'long',
-  });
-
-  const formatDateTooltip = (value) => {
-    return formatter.format(value).replace(/\s*г\./, '');
-  };
-
-  const formatPips = (value) => {
-    const date = new Date(value);
-    const month = formatter.format(value).substring(0, 3);
-    const year = date.getFullYear();
-    return month === 'янв' ? year : month;
-  }
-
-  const filterPips = (value) => {
-    const date = formatter.format(value).substring(0, 3);
-    return date === 'янв' ? 1 : -1;
-  }
 
   return (
     <div className={styles.dateSlider}>
@@ -63,28 +44,12 @@ const DateSlider = () => {
         </button>
       </div>
       <div className={styles.dateSliderRangeContainer}>
-        <Nouislider
-          key={isOpaqueYearBtn}
-          range={{ min: timestamp('2015'), max: timestamp('2017') }}
-          step={1000 * 60 * 60 * 24 * 30.75}
-          start={[timestamp('2015, 5'), timestamp('2016, 2')]}
-          tooltips={[
-            {
-              to: formatDateTooltip,
-            },
-            {
-              to: formatDateTooltip,
-            },
-          ]}
-          pips={{
-            mode: 'steps',
-            density: 3,
-            filter: isOpaqueYearBtn ? filterPips : null,
-            format: {
-              to: formatPips,
-            },
-          }}
-          connect
+        <CustomSlider
+          isYearBtn={isOpaqueYearBtn}
+          min={timestamp(minValue)}
+          max={timestamp(maxValue)}
+          defaultMin={timestamp(defaultMinValue)}
+          defaultMax={timestamp(defaultMaxValue)}
         />
       </div>
     </div>
