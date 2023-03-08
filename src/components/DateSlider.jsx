@@ -4,8 +4,8 @@ import 'nouislider/distribute/nouislider.css';
 import styles from './DateSlider.module.scss';
 
 const DateSlider = () => {
-  const [isOpaqueMonthBtn, setIsOpaqueMonthBtn] = useState(false);
   const [isOpaqueYearBtn, setIsOpaqueYearBtn] = useState(true);
+  const [isOpaqueMonthBtn, setIsOpaqueMonthBtn] = useState(false);
 
   const handleAllYearClick = () => {
     setIsOpaqueYearBtn(true);
@@ -17,20 +17,30 @@ const DateSlider = () => {
     setIsOpaqueYearBtn(false);
   };
 
-  function timestamp(str) {
+  const timestamp = (str) => {
     return new Date(str).getTime();
-  }
+  };
 
   const formatter = new Intl.DateTimeFormat('ru', {
     year: 'numeric',
     month: 'long',
   });
-  
-  function formatDate(value) {
+
+  const formatDateTooltip = (value) => {
     return formatter.format(value).replace(/\s*г\./, '');
+  };
+
+  const formatPips = (value) => {
+    const date = new Date(value);
+    const month = formatter.format(value).substring(0, 3);
+    const year = date.getFullYear();
+    return month === 'янв' ? year : month;
   }
 
-
+  const filterPips = (value) => {
+    const date = formatter.format(value).substring(0, 3);
+    return date === 'янв' ? 1 : -1;
+  }
 
   return (
     <div className={styles.dateSlider}>
@@ -41,7 +51,7 @@ const DateSlider = () => {
           } `}
           onClick={handleAllYearClick}
         >
-          Все года
+          Years
         </button>
         <button
           className={`${styles.dateSliderButton} ${
@@ -49,22 +59,31 @@ const DateSlider = () => {
           } `}
           onClick={handleAllMonthClick}
         >
-          Месяца
+          Months
         </button>
       </div>
       <div className={styles.dateSliderRangeContainer}>
         <Nouislider
-          range={{ min: timestamp('2010'), max: timestamp('2016') }}
-          step={30 * 24 * 60 * 60 * 1000}
-          start={[timestamp('2011'), timestamp('2015')]}
+          key={isOpaqueYearBtn}
+          range={{ min: timestamp('2015'), max: timestamp('2017') }}
+          step={1000 * 60 * 60 * 24 * 30.75}
+          start={[timestamp('2015, 5'), timestamp('2016, 2')]}
           tooltips={[
             {
-              to: formatDate,
+              to: formatDateTooltip,
             },
             {
-              to: formatDate,
+              to: formatDateTooltip,
             },
           ]}
+          pips={{
+            mode: 'steps',
+            density: 3,
+            filter: isOpaqueYearBtn ? filterPips : null,
+            format: {
+              to: formatPips,
+            },
+          }}
           connect
         />
       </div>
