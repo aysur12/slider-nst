@@ -177,6 +177,7 @@
   font-size: 14px;
   line-height: 18px;
 }
+
 /* Markings;
  *
  */
@@ -304,4 +305,10 @@
   transform: translate(0, -18px);
   top: auto;
   right: 28px;
+}
+
+@media screen and (max-width: 968px)  {
+  .noUi-value-sub:not(:nth-child(25n)) {
+    display: none;
+  }
 }
