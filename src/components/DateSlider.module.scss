@@ -5,12 +5,13 @@
   gap: 20px;
   width: 100%;
   margin: 0 auto;
-  padding: 100px 40px 70px 23px;
+  padding: 100px 60px 70px 23px;
 
-  @media screen and (max-width: 1415px) {
+  @media screen and (max-width: 1435px) {
     flex-direction: column;
     align-items: center;
     gap: 0;
+    padding-left: 45px;
   }
 
   &Buttons {
@@ -37,8 +38,8 @@
     width: clamp(250px, 100%, 1270px);
     margin-top: 15px;
 
-    @media screen and (max-width: 1415px) {
-      width: clamp(250px, 90%, 1352px);
+    @media screen and (max-width: 1435px) {
+      width: clamp(250px, 100%, 100%);
     }
   }
 }
