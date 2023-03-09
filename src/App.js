@@ -3,7 +3,7 @@ import './App.css';
 
 function App() {
   const minValue = '2015';
-  const maxValue = '2017';
+  const maxValue = '2020';
 
   const defaultMinValue = '2015, 5';
   const defaultMaxValue = '2016, 2';
