@@ -308,8 +308,14 @@
   right: 28px;
 }
 
-@media screen and (max-width: 968px)  {
-  .noUi-value-sub:not(:nth-child(25n)) {
+@media screen and (max-width: 968px) {
+  .noUi-value-sub:not(:nth-child(35n)) {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .noUi-value-large:nth-child(4n):not(:first-child):not(:last-child) {
     display: none;
   }
 }

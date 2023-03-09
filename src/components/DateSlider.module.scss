@@ -35,11 +35,11 @@
   }
 
   &RangeContainer {
-    width: clamp(250px, 100%, 1270px);
+    width: clamp(215px, 100%, 1270px);
     margin-top: 15px;
 
     @media screen and (max-width: 1435px) {
-      width: clamp(250px, 100%, 100%);
+      width: clamp(215px, 100%, 100%);
     }
   }
 }
