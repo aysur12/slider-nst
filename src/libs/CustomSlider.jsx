@@ -36,9 +36,27 @@ const CustomSlider = (props) => {
     return month === 'янв' ? year : month;
   };
 
-  const filterPips = (value) => {
-    const date = formatter.format(value).substring(0, 3);
-    return date === 'янв' ? 1 : -1;
+
+
+  const filterYearPips = (value) => {
+    const date = new Date(value);
+    const year = date.getFullYear();
+    const formattedValue = formatter.format(value);
+    const month = formattedValue.substring(0, 3);
+    if (isBigGap && month === 'янв') {
+      return year % 2 ? -1 : 1;
+    }
+    return month === 'янв' ? 1 : -1;
+  };
+
+  const filterMonthPips = (value) => {
+    const date = new Date(value);
+    const year = date.getFullYear();
+    const formattedValue = formatter.format(value);
+    const month = formattedValue.substring(0, 3);
+    if (isBigGap) {
+      return month === 'янв' ? 1 : -1;
+    }
   };
 
   return (
@@ -59,7 +77,7 @@ const CustomSlider = (props) => {
         pips={{
           mode: 'steps',
           density: 50,
-          filter: isYearBtn ? filterPips : null,
+          filter: isYearBtn ? filterYearPips : null,
           format: {
             to: formatPips,
           },
