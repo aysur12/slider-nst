@@ -2,8 +2,8 @@ import DateSlider from './components/DateSlider';
 import './App.css';
 
 function App() {
-  const minValue = '2005';
-  const maxValue = '2030';
+  const minValue = '2015';
+  const maxValue = '2017';
 
   const defaultMinValue = '2015, 5';
   const defaultMaxValue = '2016, 2';
